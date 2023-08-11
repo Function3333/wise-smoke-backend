@@ -24,7 +24,7 @@ public class BoardRepository {
 
     //Read(DB데이터 전부 가져오기)
     public List<Board> findAll() {
-        return em.createQuery("select b from Board b", Board.class)
+        return em.createQuery("select b from BOARD b", Board.class)
                 .getResultList();
     }
 

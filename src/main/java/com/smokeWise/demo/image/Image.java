@@ -16,4 +16,20 @@ public class Image {
     @ManyToOne
     @JoinColumn(name = "BOARD_NO")
     private Board board;
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 }
