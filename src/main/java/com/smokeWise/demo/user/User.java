@@ -11,39 +11,45 @@ public class User {
     // 이메일, 생년월일은 로그인 데이터를 가져와서 입력할거라 notnull 별도 표시안함
     // 소셜로그인 아이디를 그대로 사용하기 때문에 @GeneratedValue는 사용하지 않음
     // 카카오를 시작으로 로그인 구현할건데 조인과 관련해서는 추후 명시
+    // USER_ID를 PRIMARY로 할경우 에러가 발생하는데 확인해야함
 
     @Id
-    @Column(name = "USER_ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_NUMBER")
+    private int userNumber;
+
+    @NotNull
+    @Column(name = "USER_ID", unique = true, length = 50)
     private String userID;
 
     @NotNull
-    @Column(name = "NICKNAME", unique = true)
+    @Column(name = "NICKNAME", unique = true, length = 30)
     private String nickname;
 
     @NotNull
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", length = 30)
     private String password;
 
     @NotNull
-    @Column(name = "USER_NAME")
+    @Column(name = "NAME", length = 30)
     private String userName;
 
-    @Column(name = "PHONE_NUMBER")
+    @Column(name = "PHONE_NUMBER", length = 13)
     private String phoneNumber;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", length = 100)
     private String email;
 
-    @Column(name = "GENDER") // 0: 남자, 1: 여자
+    @Column(name = "GENDER")
     private boolean gender;
 
-    @Column(name = "BIRTH_DATE")
+    @Column(name = "BIRTH_DATE", length = 8)
     private String birthDate;
 
-    @Column(name = "AGE")
+    @NotNull
+    @Column(name = "AGE", length = 5)
     private int age;
 
-    @NotNull
     @Column(name = "USER_REG_DATE")
     private Date userRegDate;
 

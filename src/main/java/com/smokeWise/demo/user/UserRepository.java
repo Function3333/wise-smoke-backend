@@ -24,7 +24,7 @@ public class UserRepository {
 
     // Read (모두 가져오기)
     public List<User> userFindList() {
-        return em.createQuery("SELECT u FROM User u", User.class)
+        return em.createQuery("SELECT u FROM USER u", User.class)
                 .getResultList();
     }
 
