@@ -26,19 +26,17 @@ import java.util.Map;
 public class SmkAreaServiceImpl implements SmkAreaService{
 
     //Field
-    @Value("${Data-go-kr-Kwanak.apiKey}")
     private String KwanakApiKey;
-    @Value("${Data-go-kr-Kwanak.URL}")
     private String KwanakApiUrl;
 
     //Constructor DI
-//    public SmkAreaServiceImpl(@Value("#{findSmkArea['Data-go-kr-Kwanak.apiKey']}") String KwanakApiKey,
-//                              @Value("#{findSmkArea['Data-go-kr-Kwanak.URL']}") String KwanakApiUrl) {
-//        this.KwanakApiKey = KwanakApiKey;
-//        this.KwanakApiUrl = KwanakApiUrl;
-//
-//        System.out.println(this.getClass());
-//    }
+    public SmkAreaServiceImpl(@Value("${Data-go-kr-Kwanak.apiKey}") String KwanakApiKey,
+                              @Value("${Data-go-kr-Kwanak.URL}") String KwanakApiUrl) {
+        this.KwanakApiKey = KwanakApiKey;
+        this.KwanakApiUrl = KwanakApiUrl;
+
+        System.out.println(this.getClass());
+    }
 
     //흡연구역 정보 가져오기
     public Map<String, Object> getSmkArea() throws Exception {
