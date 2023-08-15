@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -21,20 +22,23 @@ import java.util.Map;
 
 
 @Service("smkAreaServiceImpl")
+@PropertySource("classpath:findSmkArea.properties")
 public class SmkAreaServiceImpl implements SmkAreaService{
 
     //Field
+    @Value("${Data-go-kr-Kwanak.apiKey}")
     private String KwanakApiKey;
+    @Value("${Data-go-kr-Kwanak.URL}")
     private String KwanakApiUrl;
 
     //Constructor DI
-    public SmkAreaServiceImpl(@Value("#{findSmkArea['Data-go-kr-Kwanak.apiKey']}") String KwanakApiKey,
-                              @Value("#{findSmkArea['Data-go-kr-Kwanak.URL']}") String KwanakApiUrl) {
-        this.KwanakApiKey = KwanakApiKey;
-        this.KwanakApiUrl = KwanakApiUrl;
-
-        System.out.println(this.getClass());
-    }
+//    public SmkAreaServiceImpl(@Value("#{findSmkArea['Data-go-kr-Kwanak.apiKey']}") String KwanakApiKey,
+//                              @Value("#{findSmkArea['Data-go-kr-Kwanak.URL']}") String KwanakApiUrl) {
+//        this.KwanakApiKey = KwanakApiKey;
+//        this.KwanakApiUrl = KwanakApiUrl;
+//
+//        System.out.println(this.getClass());
+//    }
 
     //흡연구역 정보 가져오기
     public Map<String, Object> getSmkArea() throws Exception {
